@@ -2,8 +2,10 @@
 
 namespace Database\Factories;
 
+use App\Models\Country;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\DB;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Property>
@@ -17,6 +19,12 @@ class PropertyFactory extends Factory
      */
     public function definition(): array
     {
+
+        // get random country
+        $country = Country::orderBy(DB::raw('RAND()'))
+            ->limit(1)
+            ->get()
+            ->first();
 
         $bedroomCount = random_int(1, 5);
         $bathroomCount = random_int(1, 3);
@@ -36,6 +44,7 @@ class PropertyFactory extends Factory
         $listedAt = fake()->dateTimeBetween($sixMonthsAgo, $now);
 
         return [
+            'country_id' => $country->id,
             'views' => random_int(10, 600),
             'bedroom_count' => $bedroomCount,
             'bathroom_count' => $bathroomCount,

@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('country_id');
             $table->unsignedInteger('views')->default(0);
             $table->unsignedSmallInteger('bedroom_count')->default(0);
             $table->unsignedSmallInteger('bathroom_count')->default(0);
@@ -22,6 +23,11 @@ return new class extends Migration
             $table->decimal('price', 11, 2)->default(0);
             $table->dateTime('listed_at');
             $table->timestamps();
+
+            $table->foreign('country_id')
+                ->references('id')
+                ->on('countries')
+                ->cascadeOnDelete();
         });
     }
 
