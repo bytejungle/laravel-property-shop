@@ -15,7 +15,7 @@ class PropertySeeder extends Seeder
     {
         // create property models
         Property::factory()
-            ->count(5000)
+            ->count(30000)
             ->create();
     }
 }
