@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Agent>
@@ -26,11 +27,23 @@ class AgentFactory extends Factory
         $threeDaysAgo = Carbon::now()->subDays(3);
         $lastSeenAt = fake()->dateTimeBetween($threeDaysAgo, $now);
 
+        // create name and email
+        $firstName = fake()->firstName($gender);
+        $lastName = fake()->lastName();
+
+        $emailAddressFormat = '@firstName.@lastName@domain';
+        $emailAddress = strtr($emailAddressFormat, [
+            '@firstName' => fake()->firstName($gender),
+            '@lastName' => fake()->lastName(),
+            '@domain' => fake()->freeEmailDomain(),
+        ]);
+
         return [
             'gender' => $gender,
-            'first_name' => fake()->firstName($gender),
-            'last_name' => fake()->lastName(),
+            'first_name' => Str::lower($firstName),
+            'last_name' => Str::lower($lastName),
             'mobile_number' => fake()->e164PhoneNumber(),
+            'email_address' => Str::Lower($emailAddress),
             'last_seen_at' => $lastSeenAt,
         ];
     }

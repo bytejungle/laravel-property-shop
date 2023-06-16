@@ -19,5 +19,6 @@ class Agent extends Model
         'first_name',
         'last_name',
         'mobile_number',
+        'email_address',
     ];
 }
