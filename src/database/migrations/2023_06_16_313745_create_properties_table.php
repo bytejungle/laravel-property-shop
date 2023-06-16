@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('country_id');
+            $table->unsignedBigInteger('agent_id');
             $table->unsignedInteger('views')->default(0);
             $table->unsignedSmallInteger('bedroom_count')->default(0);
             $table->unsignedSmallInteger('bathroom_count')->default(0);
@@ -27,6 +28,11 @@ return new class extends Migration
             $table->foreign('country_id')
                 ->references('id')
                 ->on('countries')
+                ->cascadeOnDelete();
+
+            $table->foreign('agent_id')
+                ->references('id')
+                ->on('agents')
                 ->cascadeOnDelete();
         });
     }

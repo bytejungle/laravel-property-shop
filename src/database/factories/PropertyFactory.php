@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Agent;
 use App\Models\Country;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -26,6 +27,12 @@ class PropertyFactory extends Factory
             ->get()
             ->first();
 
+        // get random agent
+        $agent = Agent::orderBy(DB::raw('RAND()'))
+            ->limit(1)
+            ->get()
+            ->first();
+
         $bedroomCount = random_int(1, 5);
         $bathroomCount = random_int(1, 3);
         $carCount = random_int(1, 4);
@@ -45,6 +52,7 @@ class PropertyFactory extends Factory
 
         return [
             'country_id' => $country->id,
+            'agent_id' => $agent->id,
             'views' => random_int(10, 600),
             'bedroom_count' => $bedroomCount,
             'bathroom_count' => $bathroomCount,

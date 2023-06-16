@@ -15,8 +15,8 @@ class DatabaseSeeder extends Seeder
         // call other seeders
         $this->call([
             CountrySeeder::class,
-            PropertySeeder::class,
             AgentSeeder::class,
+            PropertySeeder::class,
         ]);
     }
 }
