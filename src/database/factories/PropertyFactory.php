@@ -36,6 +36,7 @@ class PropertyFactory extends Factory
         $listedAt = fake()->dateTimeBetween($sixMonthsAgo, $now);
 
         return [
+            'views' => random_int(10, 600),
             'bedroom_count' => $bedroomCount,
             'bathroom_count' => $bathroomCount,
             'car_count' => $carCount,

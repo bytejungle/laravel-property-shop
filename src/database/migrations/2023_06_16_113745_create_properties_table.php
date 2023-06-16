@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('views')->default(0);
             $table->unsignedSmallInteger('bedroom_count')->default(0);
             $table->unsignedSmallInteger('bathroom_count')->default(0);
             $table->unsignedSmallInteger('car_count')->default(0);

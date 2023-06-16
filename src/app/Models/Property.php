@@ -15,6 +15,7 @@ class Property extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'views',
         'bedroom_count',
         'bathroom_count',
         'car_count',
