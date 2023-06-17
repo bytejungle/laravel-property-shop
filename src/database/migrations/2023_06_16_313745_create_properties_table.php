@@ -21,6 +21,7 @@ return new class extends Migration
             $table->unsignedSmallInteger('car_count')->default(0);
             $table->text('description');
             $table->string('street_address');
+            $table->string('image_url');
             $table->decimal('price', 11, 2)->default(0);
             $table->dateTime('listed_at');
             $table->timestamps();

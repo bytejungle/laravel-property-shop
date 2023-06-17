@@ -23,6 +23,7 @@ class Property extends Model
         'car_count',
         'description',
         'street_address',
+        'image_url',
         'price',
         'listed_at',
     ];
