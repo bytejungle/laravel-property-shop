@@ -24,6 +24,22 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('/statistics', function () {
+
+    // get statistics
+    $properties = DB::table('properties')->count('*');
+    $countries = DB::table('countries')->count('*');
+    $agents = DB::table('agents')->count('*');
+
+    return [
+        'data' => [
+            'properties' => $properties,
+            'countries' => $countries,
+            'agents' => $agents,
+        ],
+    ];
+});
+
 Route::get('agents', function () {
     return new AgentResource(Agent::paginate());
 });
