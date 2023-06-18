@@ -38,12 +38,19 @@ class AgentFactory extends Factory
             '@domain' => fake()->freeEmailDomain(),
         ]);
 
+        // create image url
+        $imageUrlFormat = 'https://api.dicebear.com/6.x/initials/svg?seed=@seed';
+        $imageUrl = strtr($imageUrlFormat, [
+            '@seed' => $firstName,
+        ]);
+
         return [
             'gender' => $gender,
             'first_name' => Str::lower($firstName),
             'last_name' => Str::lower($lastName),
             'mobile_number' => fake()->e164PhoneNumber(),
             'email_address' => Str::Lower($emailAddress),
+            'image_url' => $imageUrl,
             'last_seen_at' => $lastSeenAt,
         ];
     }
