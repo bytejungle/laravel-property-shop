@@ -39,6 +39,19 @@ export interface Property {
     updated_at: Date;
 }
 
+export interface Agent {
+    id: number;
+    gender: string;
+    first_name: string;
+    last_name: string;
+    mobile_number: string;
+    email_address: string;
+    image_url: string;
+    last_seen_at: Date;
+    created_at: Date;
+    updated_at: Date;
+}
+
 export default class Api {
     public static STATUS_OK: number = 200;
 
@@ -58,5 +71,11 @@ export default class Api {
         AxiosResponse<TopAgentsApiResponse> | undefined
     > {
         return await axios.get(`/api/agents/top`);
+    }
+
+    public static async getAgent(
+        agentId: number
+    ): Promise<AxiosResponse<Agent> | undefined> {
+        return await axios.get(`/api/agents/${agentId}`);
     }
 }
