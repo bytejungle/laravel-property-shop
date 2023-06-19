@@ -4,6 +4,12 @@ export interface RequestOptions {
     page?: number;
 }
 
+export interface TopAgentsApiResponse {
+    data: {
+        agents: Array<{ agent_id: number; count: number }>;
+    };
+}
+
 export interface StatisticsApiResponse {
     data: {
         properties: number;
@@ -46,5 +52,11 @@ export default class Api {
         requestOptions: RequestOptions
     ): Promise<AxiosResponse<PropertiesApiResponse> | undefined> {
         return await axios.get(`/api/properties?page=${requestOptions.page}`);
+    }
+
+    public static async getTopAgents(): Promise<
+        AxiosResponse<TopAgentsApiResponse> | undefined
+    > {
+        return await axios.get(`/api/agents/top`);
     }
 }

@@ -44,6 +44,21 @@ Route::get('agents', function () {
     return new AgentResource(Agent::paginate());
 });
 
+Route::get('agents/top', function () {
+    $topAgents = DB::table('properties')
+        ->select(DB::raw('agent_id, count(*) as count'))
+        ->groupBy('agent_id')
+        ->orderByDesc('count')
+        ->limit(20)
+        ->get();
+
+    return [
+        'data' => [
+            'agents' => $topAgents
+        ],
+    ];
+});
+
 Route::get('agents/{id}', function (string $id) {
     return new AgentResource(Agent::findOrFail($id));
 });
