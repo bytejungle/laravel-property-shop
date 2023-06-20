@@ -16,20 +16,20 @@ const TwoColumn: React.FC<Props> = (props: Props) => {
             {/* Two Column */}
             <div className="flex flex-col lg:flex-row px-5">
                 {/* Column One */}
-                <div className="grid flex-grow h-full p-4">
+                <div className="grid flex-grow h-full pr-5">
                     <h1 className="text-primary text-3xl font-bold mb-2">
                         {props.columnOne.title}
                     </h1>
-                    <div className="bg-base-200 place-items-center p-4">
+                    <div className="place-items-center">
                         {props.columnOne.children}
                     </div>
                 </div>
                 {/* Column Two */}
-                <div className="grid flex-grow h-full p-4">
+                <div className="grid flex-grow h-full ">
                     <h1 className="text-primary text-3xl font-bold mb-2">
                         {props.columnTwo.title}
                     </h1>
-                    <div className="bg-base-200 place-items-center p-4">
+                    <div className="place-items-center ">
                         {props.columnTwo.children}
                     </div>
                 </div>

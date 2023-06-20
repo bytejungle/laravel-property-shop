@@ -13,7 +13,7 @@ const PropertyCard: React.FC<Props> = (props: Props) => {
     return (
         <React.Fragment>
             {/* Property Card */}
-            <div className="card bg-base-100 text-sm shadow">
+            <div className="bg-base-100 text-sm shadow">
                 <figure>
                     <img
                         src={props.property.image_url}

@@ -26,7 +26,7 @@ const AgentCard: React.FC<Props> = (props: Props) => {
         <React.Fragment>
             {/* Property Card */}
             {agent && lastSeenAt && (
-                <div className="card bg-base-100 text-sm shadow w-96">
+                <div className="bg-base-100 text-sm w-96 shadow">
                     <div className="card-body">
                         <div className="flex">
                             <div className="mr-3">

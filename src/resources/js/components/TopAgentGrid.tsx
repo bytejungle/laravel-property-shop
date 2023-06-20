@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import Api, { Agent } from "../networking/api";
+import Api from "../networking/api";
 import AgentCard from "./AgentCard";
 
 const TopAgentGrid: React.FC = () => {
@@ -22,7 +22,7 @@ const TopAgentGrid: React.FC = () => {
             <div className="columns-1">
                 {agentIds.map((agentId, index) => {
                     return (
-                        <div className="mb-2">
+                        <div className="mb-5">
                             <AgentCard key={index} agentId={agentId} />
                         </div>
                     );
