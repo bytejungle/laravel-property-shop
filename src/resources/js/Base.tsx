@@ -5,10 +5,10 @@ import HomePage from "./pages/HomePage";
 const Base: React.FC = () => {
     return (
         <BrowserRouter>
-            <Routes>
-                <Route index path="/" element={<HomePage />} />
-            </Routes>
-        </BrowserRouter>
+                <Routes>
+                    <Route index path="/" element={<HomePage />} />
+                </Routes>
+            </BrowserRouter>
     );
 };
 

@@ -10,7 +10,7 @@ const PropertyGrid: React.FC = () => {
     return (
         <React.Fragment>
             {/* Property Grid */}
-            <div className="m-4 grid grid-cols-3 gap-6">
+            <div className="grid grid-cols-3 gap-5 w-full">
                 {properties.map((property, index) => {
                     return <PropertyCard key={index} property={property} />;
                 })}

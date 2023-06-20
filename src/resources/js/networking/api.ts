@@ -22,6 +22,10 @@ export interface PropertiesApiResponse {
     data: Array<Property>;
 }
 
+export interface AgentApiResponse {
+    data: Agent;
+}
+
 export interface Property {
     id: number;
     country_id: number;
@@ -75,7 +79,7 @@ export default class Api {
 
     public static async getAgent(
         agentId: number
-    ): Promise<AxiosResponse<Agent> | undefined> {
+    ): Promise<AxiosResponse<AgentApiResponse> | undefined> {
         return await axios.get(`/api/agents/${agentId}`);
     }
 }
