@@ -1,14 +1,21 @@
 import React from "react";
 import { Property } from "../networking/api";
 import moment from "moment";
+import BadgeOutline from "./BadgeOutline";
 
 interface Props {
     property: Property;
+    handler: any;
 }
 
 const PropertyCard: React.FC<Props> = (props: Props) => {
     const listedAt = moment(props.property.listed_at);
     const isNew = listedAt.isSame(new Date(), "month");
+
+    const onViewDetailsClicked = () => {
+        props.handler(props.property);
+        window.modal.showModal();
+    };
 
     return (
         <React.Fragment>
@@ -37,16 +44,19 @@ const PropertyCard: React.FC<Props> = (props: Props) => {
                     </div>
                     <p>{props.property.description}</p>
                     <div className="card-actions">
-                        <div className="badge badge-outline">
-                            {props.property.bedroom_count} Bedrooms
-                        </div>
-                        <div className="badge badge-outline">
-                            {props.property.bathroom_count} Bathrooms
-                        </div>
-                        <div className="badge badge-outline">
-                            {props.property.car_count} Car ports
-                        </div>
-                        <button className="btn btn-primary btn-wide w-full mt-5">
+                        <BadgeOutline
+                            text={props.property.bedroom_count + " Bedrooms"}
+                        />
+                        <BadgeOutline
+                            text={props.property.bathroom_count + " Bathrooms"}
+                        />
+                        <BadgeOutline
+                            text={props.property.car_count + " Car ports"}
+                        />
+                        <button
+                            className="btn btn-primary btn-wide w-full mt-5"
+                            onClick={onViewDetailsClicked}
+                        >
                             View Details
                         </button>
                     </div>

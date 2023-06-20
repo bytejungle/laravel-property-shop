@@ -4,7 +4,11 @@ import { useState } from "react";
 import { Property } from "../networking/api";
 import PropertyCard from "./PropertyCard";
 
-const PropertyGrid: React.FC = () => {
+interface Props {
+    handler: any;
+}
+
+const PropertyGrid: React.FC<Props> = (props: Props) => {
     const [properties, setProperties] = useState<Array<Property>>([]);
 
     return (
@@ -12,7 +16,7 @@ const PropertyGrid: React.FC = () => {
             {/* Property Grid */}
             <div className="grid grid-cols-3 gap-5 w-full">
                 {properties.map((property, index) => {
-                    return <PropertyCard key={index} property={property} />;
+                    return <PropertyCard key={index} property={property} handler={props.handler} />;
                 })}
             </div>
             <PropertyPaginator handler={setProperties} />

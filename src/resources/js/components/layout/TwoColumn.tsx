@@ -25,11 +25,11 @@ const TwoColumn: React.FC<Props> = (props: Props) => {
                     </div>
                 </div>
                 {/* Column Two */}
-                <div className="grid flex-grow h-full ">
+                <div className="grid flex-grow h-full">
                     <h1 className="text-primary text-3xl font-bold mb-2">
                         {props.columnTwo.title}
                     </h1>
-                    <div className="place-items-center ">
+                    <div className="place-items-center w-96">
                         {props.columnTwo.children}
                     </div>
                 </div>

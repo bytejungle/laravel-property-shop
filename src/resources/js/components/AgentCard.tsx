@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import StringHelper from "../helpers/StringHelper";
 import Avatar from "./Avatar";
 import moment from "moment";
+import BadgeOutline from "./BadgeOutline";
 
 interface Props {
     agentId: number;
@@ -18,7 +19,7 @@ const AgentCard: React.FC<Props> = (props: Props) => {
                 setAgent(response.data.data);
             }
         });
-    }, []);
+    }, [props]);
 
     const lastSeenAt = agent ? moment(agent.last_seen_at) : undefined;
 
@@ -26,7 +27,7 @@ const AgentCard: React.FC<Props> = (props: Props) => {
         <React.Fragment>
             {/* Property Card */}
             {agent && lastSeenAt && (
-                <div className="bg-base-100 text-sm w-96 shadow">
+                <div className="bg-base-100 text-sm w-full shadow">
                     <div className="card-body">
                         <div className="flex">
                             <div className="mr-3">
@@ -49,12 +50,8 @@ const AgentCard: React.FC<Props> = (props: Props) => {
                         </div>
                         <p>Contact Information:</p>
                         <div className="card-actions">
-                            <div className="badge badge-outline">
-                                {agent.mobile_number}
-                            </div>
-                            <div className="badge badge-outline">
-                                {agent.email_address}
-                            </div>
+                            <BadgeOutline text={agent.mobile_number} />
+                            <BadgeOutline text={agent.email_address} />
                         </div>
                     </div>
                 </div>
