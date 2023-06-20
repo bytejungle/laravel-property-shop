@@ -49,7 +49,7 @@ Route::get('agents/top', function () {
         ->select(DB::raw('agent_id, count(*) as count'))
         ->groupBy('agent_id')
         ->orderByDesc('count')
-        ->limit(20)
+        ->limit(5)
         ->get();
 
     return [
