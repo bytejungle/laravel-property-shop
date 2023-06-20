@@ -41,7 +41,7 @@ Route::get('/statistics', function () {
 });
 
 Route::get('agents', function () {
-    return new AgentResource(Agent::paginate());
+    return new AgentResource(Agent::paginate(6));
 });
 
 Route::get('agents/top', function () {
@@ -64,7 +64,7 @@ Route::get('agents/{id}', function (string $id) {
 });
 
 Route::get('properties', function () {
-    return new PropertyResource(Property::paginate());
+    return new PropertyResource(Property::paginate(6));
 });
 
 Route::get('properties/{id}', function (string $id) {
@@ -72,7 +72,7 @@ Route::get('properties/{id}', function (string $id) {
 });
 
 Route::get('countries', function () {
-    return new CountryResource(Country::paginate());
+    return new CountryResource(Country::paginate(6));
 });
 
 Route::get('countries/{id}', function (string $id) {
