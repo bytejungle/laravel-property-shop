@@ -2,20 +2,25 @@ import React from "react";
 import { useState, useEffect } from "react";
 import StatisticsBox from "./StatisticsBox";
 import Api from "../networking/api";
+import Spinner from "./Spinner";
 
 const StatisticsBar: React.FC = () => {
     const [properties, setProperties] = useState<number>(0);
     const [countries, setCountries] = useState<number>(0);
     const [agents, setAgents] = useState<number>(0);
+    const [isLoading, setIsLoading] = useState<Boolean>(false);
 
     useEffect(() => {
-        Api.getStatistics().then((response) => {
-            if (response && response.status === Api.STATUS_OK) {
-                setProperties(response.data.data.properties);
-                setCountries(response.data.data.countries);
-                setAgents(response.data.data.agents);
-            }
-        });
+        setIsLoading(true);
+        Api.getStatistics()
+            .then((response) => {
+                if (response && response.status === Api.STATUS_OK) {
+                    setProperties(response.data.data.properties);
+                    setCountries(response.data.data.countries);
+                    setAgents(response.data.data.agents);
+                }
+            })
+            .finally(setIsLoading(false));
     }, []);
 
     return (
@@ -27,6 +32,7 @@ const StatisticsBar: React.FC = () => {
                     <StatisticsBox
                         title={"⮞ Total Listed Properties"}
                         value={properties}
+                        isLoading={isLoading}
                     />
                 </div>
                 <div className="divider divider-horizontal"></div>
@@ -35,12 +41,17 @@ const StatisticsBar: React.FC = () => {
                     <StatisticsBox
                         title={"⮞ Total Countries"}
                         value={countries}
+                        isLoading={isLoading}
                     />
                 </div>
                 <div className="divider divider-horizontal"></div>
                 {/* Total Agents */}
                 <div className="grid flex-grow bg-base-200">
-                    <StatisticsBox title={"⮞ Total Agents"} value={agents} />
+                    <StatisticsBox
+                        title={"⮞ Total Agents"}
+                        value={agents}
+                        isLoading={isLoading}
+                    />
                 </div>
             </div>
         </React.Fragment>
