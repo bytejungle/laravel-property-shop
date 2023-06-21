@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import Api, { RequestOptions } from "../networking/api";
+import { toast } from "react-toastify";
 
 interface Props {
     handler: any;
@@ -13,6 +14,7 @@ const PropertyPaginator: React.FC<Props> = (props: Props) => {
         const requestOptions: RequestOptions = { page: currentPage };
 
         Api.getProperties(requestOptions).then((response) => {
+            toast.info("Loading properties...");
             if (response && response.status === Api.STATUS_OK) {
                 props.handler(response.data.data);
             }

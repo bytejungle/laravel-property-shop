@@ -6,6 +6,7 @@ import Card from "./card/Card";
 import CardBody from "./card/CardBody";
 import CardActions from "./card/CardActions";
 import CardTitle from "./card/CardTitle";
+import { toast } from "react-toastify";
 
 interface Props {
     property: Property;
@@ -17,6 +18,7 @@ const PropertyCard: React.FC<Props> = (props: Props) => {
     const isNew = listedAt.isSame(new Date(), "month");
 
     const onViewDetailsClicked = () => {
+        toast.info("Opening property information");
         props.handler(props.property);
         window.modal.showModal();
     };
