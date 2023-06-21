@@ -22,8 +22,8 @@ const TopAgentGrid: React.FC = () => {
             <div className="columns-1">
                 {agentIds.map((agentId, index) => {
                     return (
-                        <div className="mb-5">
-                            <AgentCard key={index} agentId={agentId} />
+                        <div className="mb-5" key={index}>
+                            <AgentCard agentId={agentId} />
                         </div>
                     );
                 })}
