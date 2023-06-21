@@ -18,7 +18,7 @@ const PropertyCard: React.FC<Props> = (props: Props) => {
     const isNew = listedAt.isSame(new Date(), "month");
 
     const onViewDetailsClicked = () => {
-        toast.info("Opening property information");
+        toast.info("Opening property information!");
         props.handler(props.property);
         window.modal.showModal();
     };
