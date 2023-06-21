@@ -18,12 +18,12 @@ export interface StatisticsApiResponse {
     };
 }
 
-export interface PropertiesApiResponse {
-    data: Array<Property>;
-}
-
 export interface AgentApiResponse {
     data: Agent;
+}
+
+export interface ArrayApiResponse<Type> {
+    data: Array<Type>;
 }
 
 export interface Property {
@@ -39,6 +39,15 @@ export interface Property {
     image_url: string;
     price: number;
     listed_at: Date;
+    created_at: Date;
+    updated_at: Date;
+}
+
+export interface Country {
+    id: number;
+    iso_3166_1_alpha_2: string;
+    name: string;
+    phone_code: number;
     created_at: Date;
     updated_at: Date;
 }
@@ -67,8 +76,14 @@ export default class Api {
 
     public static async getProperties(
         requestOptions: RequestOptions
-    ): Promise<AxiosResponse<PropertiesApiResponse> | undefined> {
+    ): Promise<AxiosResponse<ArrayApiResponse<Property>> | undefined> {
         return await axios.get(`/api/properties?page=${requestOptions.page}`);
+    }
+
+    public static async getCountries(): Promise<
+        AxiosResponse<ArrayApiResponse<Country>> | undefined
+    > {
+        return await axios.get(`/api/countries`);
     }
 
     public static async getTopAgents(): Promise<
