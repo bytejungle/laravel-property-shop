@@ -6,6 +6,10 @@ import Avatar from "./Avatar";
 import moment from "moment";
 import BadgeOutline from "./BadgeOutline";
 import Spinner from "./Spinner";
+import Card from "./card/Card";
+import CardBody from "./card/CardBody";
+import CardActions from "./card/CardActions";
+import CardTitle from "./card/CardTitle";
 
 interface Props {
     agentId: number;
@@ -33,19 +37,21 @@ const AgentCard: React.FC<Props> = (props: Props) => {
 
     if (shouldDisplaySpinner) return <Spinner />;
 
+    const formattedName =
+        StringHelper.ucFirst(agent.first_name) +
+        " " +
+        StringHelper.ucFirst(agent.last_name);
+
     return (
         <React.Fragment>
             {/* Agent Card */}
-            <div className="bg-base-100 text-sm w-full shadow">
-                <div className="card-body">
+            <Card>
+                <CardBody>
                     <div className="flex">
                         <div className="mr-3">
                             <Avatar imageUrl={agent.image_url} size="sm" />
                         </div>
-                        <div className="card-title text-primary">
-                            {StringHelper.ucFirst(agent.first_name)}{" "}
-                            {StringHelper.ucFirst(agent.last_name)}
-                        </div>
+                        <CardTitle text={formattedName} />
                     </div>
                     <div className="mb-2">
                         <p>
@@ -55,12 +61,12 @@ const AgentCard: React.FC<Props> = (props: Props) => {
                         </p>
                     </div>
                     <p>Contact Information:</p>
-                    <div className="card-actions">
+                    <CardActions>
                         <BadgeOutline text={agent.mobile_number} />
                         <BadgeOutline text={agent.email_address} />
-                    </div>
-                </div>
-            </div>
+                    </CardActions>
+                </CardBody>
+            </Card>
         </React.Fragment>
     );
 };

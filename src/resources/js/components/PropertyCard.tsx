@@ -2,6 +2,10 @@ import React from "react";
 import { Property } from "../networking/api";
 import moment from "moment";
 import BadgeOutline from "./BadgeOutline";
+import Card from "./card/Card";
+import CardBody from "./card/CardBody";
+import CardActions from "./card/CardActions";
+import CardTitle from "./card/CardTitle";
 
 interface Props {
     property: Property;
@@ -20,7 +24,7 @@ const PropertyCard: React.FC<Props> = (props: Props) => {
     return (
         <React.Fragment>
             {/* Property Card */}
-            <div className="bg-base-100 text-sm shadow">
+            <Card>
                 <figure>
                     <img
                         src={props.property.image_url}
@@ -29,10 +33,8 @@ const PropertyCard: React.FC<Props> = (props: Props) => {
                         height="80px"
                     />
                 </figure>
-                <div className="card-body">
-                    <h3 className="card-title text-primary">
-                        {props.property.street_address}
-                    </h3>
+                <CardBody>
+                    <CardTitle text={props.property.street_address} />
                     <div>
                         Listed <a className="underline">{listedAt.fromNow()}</a>
                         .
@@ -43,7 +45,7 @@ const PropertyCard: React.FC<Props> = (props: Props) => {
                         )}
                     </div>
                     <p>{props.property.description}</p>
-                    <div className="card-actions">
+                    <CardActions>
                         <BadgeOutline
                             text={props.property.bedroom_count + " Bedrooms"}
                         />
@@ -59,9 +61,9 @@ const PropertyCard: React.FC<Props> = (props: Props) => {
                         >
                             View Details
                         </button>
-                    </div>
-                </div>
-            </div>
+                    </CardActions>
+                </CardBody>
+            </Card>
         </React.Fragment>
     );
 };
