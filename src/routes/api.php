@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\AgentController;
+use App\Http\Controllers\CountryController;
+use App\Http\Controllers\PropertyController;
+use App\Http\Controllers\StatisticsController;
 use App\Http\Resources\AgentResource;
 use App\Http\Resources\CountryResource;
 use App\Http\Resources\PropertyResource;
@@ -24,57 +28,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/statistics', function () {
+// statistic routes
+Route::get('/statistics', [StatisticsController::class, 'getStatistics']);
 
-    // get statistics
-    $properties = DB::table('properties')->count('*');
-    $countries = DB::table('countries')->count('*');
-    $agents = DB::table('agents')->count('*');
+// agent routes
+Route::get('agents', [AgentController::class, 'paginateAgents']);
+Route::get('agents/top', [AgentController::class, 'getTopAgents']);
+Route::get('agents/{id}', [AgentController::class, 'getAgent']);
 
-    return [
-        'data' => [
-            'properties' => $properties,
-            'countries' => $countries,
-            'agents' => $agents,
-        ],
-    ];
-});
+// property routes
+Route::get('properties', [PropertyController::class, 'paginateProperties']);
+Route::get('properties/{id}', [PropertyController::class, 'getProperty']);
 
-Route::get('agents', function () {
-    return new AgentResource(Agent::paginate(6));
-});
-
-Route::get('agents/top', function () {
-    $topAgents = DB::table('properties')
-        ->select(DB::raw('agent_id, count(*) as count'))
-        ->groupBy('agent_id')
-        ->orderByDesc('count')
-        ->limit(5)
-        ->get();
-
-    return [
-        'data' => [
-            'agents' => $topAgents
-        ],
-    ];
-});
-
-Route::get('agents/{id}', function (string $id) {
-    return new AgentResource(Agent::findOrFail($id));
-});
-
-Route::get('properties', function () {
-    return new PropertyResource(Property::paginate(6));
-});
-
-Route::get('properties/{id}', function (string $id) {
-    return new PropertyResource(Property::findOrFail($id));
-});
-
-Route::get('countries', function () {
-    return new CountryResource(Country::paginate(6));
-});
-
-Route::get('countries/{id}', function (string $id) {
-    return new CountryResource(Country::findOrFail($id));
-});
+// country routes
+Route::get('countries', [CountryController::class, 'paginateCountries']);
+Route::get('countries/{id}', [CountryController::class, 'getCountry']);
