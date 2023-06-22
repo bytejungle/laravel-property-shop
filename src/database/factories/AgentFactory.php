@@ -33,8 +33,8 @@ class AgentFactory extends Factory
 
         $emailAddressFormat = '@firstName.@lastName@@domain';
         $emailAddress = strtr($emailAddressFormat, [
-            '@firstName' => fake()->firstName($gender),
-            '@lastName' => fake()->lastName(),
+            '@firstName' => $firstName,
+            '@lastName' => $lastName,
             '@domain' => fake()->freeEmailDomain(),
         ]);
 
