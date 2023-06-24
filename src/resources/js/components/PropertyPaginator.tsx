@@ -77,28 +77,28 @@ const PropertyPaginator: React.FC<Props> = (props: Props) => {
         return (
             <div className="columns-4">
                 <CountryDropSelectInput
-                    title="Filter by country"
+                    title="Country:"
                     value={selectedCountryId}
                     handler={setSelectedCountryId}
                 />
                 <NumberDropSelectInput
                     numberMin={0}
                     numberMax={5}
-                    title="Filter by bedroom count"
+                    title="Minimum bedroom count:"
                     value={selectedBedroomCount}
                     handler={setSelectedBedroomCount}
                 />
                 <NumberDropSelectInput
                     numberMin={0}
                     numberMax={5}
-                    title="Filter by bathroom count"
+                    title="Minimum bathroom count:"
                     value={selectedBathroomCount}
                     handler={setSelectedBathroomCount}
                 />
                 <NumberDropSelectInput
                     numberMin={0}
                     numberMax={5}
-                    title="Filter by car space count"
+                    title="Minimum car space count:"
                     value={selectedCarSpaceCount}
                     handler={setSelectedCarSpaceCount}
                 />
