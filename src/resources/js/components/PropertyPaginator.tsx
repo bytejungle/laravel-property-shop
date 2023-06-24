@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Api, { RequestOptions } from "../networking/api";
 import { toast } from "react-toastify";
 import Card from "./card/Card";
+import Spinner from "./Spinner";
 import CardBody from "./card/CardBody";
 
 import CountryDropSelectInput from "./input/CountryDropSelectInput";
@@ -18,6 +19,7 @@ interface Props {
 
 const PropertyPaginator: React.FC<Props> = (props: Props) => {
     const [currentPage, setCurrentPage] = useState<number>(1);
+    const [isLoading, setIsLoading] = useState<Boolean>(false);
 
     // filter state
     const [selectedCountryId, setSelectedCountryId] =
@@ -43,12 +45,17 @@ const PropertyPaginator: React.FC<Props> = (props: Props) => {
             carSpaceCount: selectedCarSpaceCount,
         };
 
-        Api.getProperties(requestOptions, propertyFilter).then((response) => {
-            toast.info("Loading properties...");
-            if (response && response.status === Api.STATUS_OK) {
-                props.handler(response.data.data);
-            }
-        });
+        setIsLoading(true);
+        Api.getProperties(requestOptions, propertyFilter)
+            .then((response) => {
+                toast.info("Loading properties...");
+                if (response && response.status === Api.STATUS_OK) {
+                    props.handler(response.data.data);
+                }
+            })
+            .finally(() => {
+                setIsLoading(false);
+            });
     }, [
         currentPage,
         selectedCountryId,
@@ -110,7 +117,7 @@ const PropertyPaginator: React.FC<Props> = (props: Props) => {
                         «
                     </button>
                     <button className="join-item btn">
-                        Page {currentPage}
+                        {isLoading ? <Spinner /> : "Page " + currentPage}
                     </button>
                     <button
                         className="join-item btn"
