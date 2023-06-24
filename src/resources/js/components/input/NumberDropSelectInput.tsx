@@ -10,10 +10,9 @@ interface Props {
 }
 
 const NumberDropSelectInput: React.FC<Props> = (props: Props) => {
-    const onChange = (value: any) => {
-        if (value === -1) {
-            props.handler(undefined);
-            return;
+    const onChange = (value: number) => {
+        if (value < 0) {
+            return props.handler(undefined);
         }
 
         props.handler(value);
