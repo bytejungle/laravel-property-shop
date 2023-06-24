@@ -19,6 +19,8 @@ const NumberDropSelectInput: React.FC<Props> = (props: Props) => {
         props.handler(value);
     };
 
+    const value = props.value == undefined ? -1 : props.value;
+
     const options: Array<DropSelectOption> = [];
 
     // create undefined option
@@ -32,7 +34,7 @@ const NumberDropSelectInput: React.FC<Props> = (props: Props) => {
         <DropSelectInput
             title={props.title}
             options={options}
-            value={props.value}
+            value={value}
             handler={onChange}
         />
     );

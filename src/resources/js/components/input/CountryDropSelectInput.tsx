@@ -18,8 +18,9 @@ const CountryDropSelectInput: React.FC<Props> = (props: Props) => {
                 const temporaryOptions = response.data.data.map((country) => {
                     let dropSelectOption: DropSelectOption = {
                         title: country.name,
-                        value: country,
+                        value: country.id,
                     };
+
                     return dropSelectOption;
                 });
 

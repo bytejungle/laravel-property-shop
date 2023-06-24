@@ -43,6 +43,13 @@ export interface Property {
     updated_at: Date;
 }
 
+export interface PropertyFilter {
+    country?: number;
+    bedroomCount?: number;
+    bathroomCount?: number;
+    carSpaceCount?: number;
+}
+
 export interface Country {
     id: number;
     iso_3166_1_alpha_2: string;
@@ -75,9 +82,29 @@ export default class Api {
     }
 
     public static async getProperties(
-        requestOptions: RequestOptions
+        requestOptions: RequestOptions,
+        propertyFilter: PropertyFilter
     ): Promise<AxiosResponse<ArrayApiResponse<Property>> | undefined> {
-        return await axios.get(`/api/properties?page=${requestOptions.page}`);
+        let url = `/api/properties?page=${requestOptions.page}`;
+
+        // apply filters where applicable
+        if (propertyFilter.country) {
+            url += `&country=${propertyFilter.country}`;
+        }
+
+        if (propertyFilter.bedroomCount) {
+            url += `&bedroom_count=${propertyFilter.bedroomCount}`;
+        }
+
+        if (propertyFilter.bathroomCount) {
+            url += `&bathroom_count=${propertyFilter.bathroomCount}`;
+        }
+
+        if (propertyFilter.carSpaceCount) {
+            url += `&car_count=${propertyFilter.carSpaceCount}`;
+        }
+
+        return await axios.get(url);
     }
 
     public static async getCountries(): Promise<

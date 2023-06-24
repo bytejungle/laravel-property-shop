@@ -4,7 +4,7 @@ const Footer: React.FC = () => {
     return (
         <React.Fragment>
             {/* Footer */}
-            <footer className="footer p-10 bg-neutral text-neutral-content">
+            <footer className="footer p-10 mt-5 bg-neutral text-neutral-content">
                 <div>
                     <p>
                         Property Shop.
