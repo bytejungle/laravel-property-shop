@@ -73,6 +73,13 @@ const PropertyPaginator: React.FC<Props> = (props: Props) => {
         setCurrentPage(currentPage + 1);
     };
 
+    const clearFilter = () => {
+        setSelectedCountryId(undefined);
+        setSelectedBedroomCount(undefined);
+        setSelectedBathroomCount(undefined);
+        setSelectedCarSpaceCount(undefined);
+    };
+
     const renderFilter = () => {
         return (
             <div className="columns-4">
@@ -126,6 +133,9 @@ const PropertyPaginator: React.FC<Props> = (props: Props) => {
                         »
                     </button>
                 </div>
+                <button className="btn btn-error mx-2" onClick={clearFilter}>
+                    Clear Filter
+                </button>
             </div>
         );
     };
