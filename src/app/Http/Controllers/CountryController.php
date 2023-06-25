@@ -11,13 +11,22 @@ class CountryController extends Controller
 {
 
     // paginate countries
-    public function paginateCountries() {
+    public function paginateCountries()
+    {
         $paginationSize = request()->get('size') ?? 6;
-        return new CountryResource(Country::paginate($paginationSize));
+        $getAll = request()->exists('all');
+
+        if ($getAll) {
+            return new CountryResource(Country::all());
+        } else {
+            $paginationSize = request()->get('size') ?? 6;
+            return new CountryResource(Country::paginate($paginationSize));
+        }
     }
 
     // get country by id
-    public function getCountry(string $id) {
+    public function getCountry(string $id)
+    {
         return new CountryResource(Country::findOrFail($id));
     }
 }
