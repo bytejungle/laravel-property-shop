@@ -11,7 +11,7 @@ const PropertyGrid: React.FC = () => {
     const [selectedProperty, setSelectedProperty] =
         useState<Property>(undefined);
 
-    const modalId = "modal";
+    const modalId = "propertyModal";
 
     return (
         <React.Fragment>

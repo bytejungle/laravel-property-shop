@@ -20,7 +20,7 @@ const PropertyCard: React.FC<Props> = (props: Props) => {
     const onViewDetailsClicked = () => {
         toast.info("Opening property information!");
         props.handler(props.property);
-        window.modal.showModal();
+        window.propertyModal.showModal();
     };
 
     return (
