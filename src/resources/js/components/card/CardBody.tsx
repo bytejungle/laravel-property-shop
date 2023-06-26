@@ -8,7 +8,7 @@ const CardBody: React.FC<Props> = (props: Props) => {
     return (
         <React.Fragment>
             {/* Card Body */}
-            <div className="card-body">{props.children}</div>
+            <div className="card-body p-3">{props.children}</div>
         </React.Fragment>
     );
 };
