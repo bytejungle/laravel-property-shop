@@ -17,6 +17,10 @@ const PropertyGrid: React.FC = () => {
         <React.Fragment>
             {/* Filter & Paginator */}
             <PropertyPaginator handler={setProperties} />
+
+            {/* Information */}
+            <p className="mb-2">Displaying {properties.length} results.</p>
+
             {/* Property Grid */}
             <div className="grid grid-cols-3 gap-5 w-full">
                 {properties.map((property, index) => {
