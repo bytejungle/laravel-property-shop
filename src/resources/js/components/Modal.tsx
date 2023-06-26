@@ -12,9 +12,11 @@ const Modal: React.FC<Props> = (props: Props) => {
             {/* Property Modal */}
             <dialog id={props.id} className="modal">
                 <form method="dialog" className="modal-box">
+                    {/* Modal Title */}
                     <h3 className="font-bold text-lg text-primary">
                         {props.title}
                     </h3>
+                    {/* Modal Body */}
                     {props.children}
                     <div className="modal-action">
                         {/* Close Button */}

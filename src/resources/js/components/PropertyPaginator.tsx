@@ -8,6 +8,8 @@ import CardBody from "./card/CardBody";
 
 import CountryDropSelectInput from "./input/CountryDropSelectInput";
 import NumberDropSelectInput from "./input/NumberDropSelectInput";
+import CountryListModal from "./CountryListModal";
+import Button from "./input/FormButton";
 
 interface Props {
     countryId: number;
@@ -73,6 +75,10 @@ const PropertyPaginator: React.FC<Props> = (props: Props) => {
         setCurrentPage(currentPage + 1);
     };
 
+    const onCountriesClicked = () => {
+        window.countryModal.showModal();
+    };
+
     const clearFilter = () => {
         setSelectedCountryId(undefined);
         setSelectedBedroomCount(undefined);
@@ -83,10 +89,10 @@ const PropertyPaginator: React.FC<Props> = (props: Props) => {
     const renderFilter = () => {
         return (
             <div className="columns-4">
-                <CountryDropSelectInput
-                    title="Country:"
-                    value={selectedCountryId}
-                    handler={setSelectedCountryId}
+                <Button
+                    title="Select country:"
+                    buttonText="Open"
+                    handler={onCountriesClicked}
                 />
                 <NumberDropSelectInput
                     numberMin={0}
@@ -151,6 +157,13 @@ const PropertyPaginator: React.FC<Props> = (props: Props) => {
                     </CardBody>
                 </Card>
             </div>
+
+            {/* Modals */}
+            <CountryListModal
+                id="countryModal"
+                title="Countries"
+                handler={setSelectedCountryId}
+            />
         </React.Fragment>
     );
 };

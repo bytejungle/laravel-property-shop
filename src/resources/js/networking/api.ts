@@ -107,10 +107,16 @@ export default class Api {
         return await axios.get(url);
     }
 
-    public static async getCountries(): Promise<
-        AxiosResponse<ArrayApiResponse<Country>> | undefined
-    > {
-        return await axios.get(`/api/countries`);
+    public static async getCountries(
+        getAll: Boolean
+    ): Promise<AxiosResponse<ArrayApiResponse<Country>> | undefined> {
+        let url = `/api/countries`;
+
+        if (getAll) {
+            url += `?all=1`;
+        }
+
+        return await axios.get(url);
     }
 
     public static async getTopAgents(): Promise<
