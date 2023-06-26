@@ -35,8 +35,8 @@ const PropertyCard: React.FC<Props> = (props: Props) => {
                         height="80px"
                     />
                 </figure>
+                <CardTitle title={props.property.street_address} />
                 <CardBody>
-                    <CardTitle text={props.property.street_address} />
                     <div>
                         Listed <a className="underline">{listedAt.fromNow()}</a>
                         .

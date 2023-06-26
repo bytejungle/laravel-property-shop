@@ -30,7 +30,7 @@ const StatisticsBar: React.FC = () => {
                 {/* Total Listed Properties */}
                 <div className="grid flex-grow bg-base-200">
                     <StatisticsBox
-                        title={"⮞ Total Listed Properties"}
+                        title={"Total Listed Properties"}
                         value={properties}
                         isLoading={isLoading}
                     />
@@ -39,7 +39,7 @@ const StatisticsBar: React.FC = () => {
                 {/* Total Countries */}
                 <div className="grid flex-grow bg-base-200">
                     <StatisticsBox
-                        title={"⮞ Total Countries"}
+                        title={"Total Countries"}
                         value={countries}
                         isLoading={isLoading}
                     />
@@ -48,7 +48,7 @@ const StatisticsBar: React.FC = () => {
                 {/* Total Agents */}
                 <div className="grid flex-grow bg-base-200">
                     <StatisticsBox
-                        title={"⮞ Total Agents"}
+                        title={"Total Agents"}
                         value={agents}
                         isLoading={isLoading}
                     />

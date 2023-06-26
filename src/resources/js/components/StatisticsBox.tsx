@@ -15,11 +15,11 @@ const StatisticsBox: React.FC<Props> = (props: Props) => {
         <React.Fragment>
             {/* Statistics Box */}
             <Card>
+                <CardTitle title={props.title} />
                 <CardBody>
-                    <CardTitle text={props.title} />
                     <div className="stat-value text-black">
-                    {props.isLoading ? <Spinner /> : props.value}
-                </div>
+                        {props.isLoading ? <Spinner /> : props.value}
+                    </div>
                 </CardBody>
             </Card>
         </React.Fragment>

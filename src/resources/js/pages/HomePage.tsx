@@ -5,6 +5,9 @@ import StatisticsBar from "../components/StatisticsBar";
 import PropertyGrid from "../components/PropertyGrid";
 import TwoColumn from "../components/layout/TwoColumn";
 import TopAgentGrid from "../components/TopAgentGrid";
+import Card from "../components/card/Card";
+import CardTitle from "../components/card/CardTitle";
+import CardBody from "../components/card/CardBody";
 
 const HomePage: React.FC = () => {
     return (
@@ -13,10 +16,18 @@ const HomePage: React.FC = () => {
             <StatisticsBar />
             <TwoColumn
                 columnOne={{
-                    title: "Properties",
                     children: <PropertyGrid />,
                 }}
-                columnTwo={{ title: "Top Agents", children: <TopAgentGrid /> }}
+                columnTwo={{
+                    children: (
+                        <Card>
+                            <CardTitle title="Top Agents" />
+                            <CardBody>
+                                <TopAgentGrid />
+                            </CardBody>
+                        </Card>
+                    ),
+                }}
             />
         </BasePage>
     );

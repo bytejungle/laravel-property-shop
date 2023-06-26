@@ -46,13 +46,15 @@ const AgentCard: React.FC<Props> = (props: Props) => {
         <React.Fragment>
             {/* Agent Card */}
             <Card>
-                <CardBody>
+                <CardTitle>
                     <div className="flex">
                         <div className="mr-3">
                             <Avatar imageUrl={agent.image_url} size="sm" />
                         </div>
-                        <CardTitle text={formattedName} />
+                        <p>{formattedName}</p>
                     </div>
+                </CardTitle>
+                <CardBody>
                     <div className="mb-2">
                         <p>
                             {StringHelper.ucFirst(agent.first_name)} was last

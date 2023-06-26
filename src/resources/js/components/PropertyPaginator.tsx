@@ -10,6 +10,7 @@ import CountryDropSelectInput from "./input/CountryDropSelectInput";
 import NumberDropSelectInput from "./input/NumberDropSelectInput";
 import CountryListModal from "./CountryListModal";
 import Button from "./input/FormButton";
+import CardTitle from "./card/CardTitle";
 
 interface Props {
     countryId: number;
@@ -151,6 +152,7 @@ const PropertyPaginator: React.FC<Props> = (props: Props) => {
             {/* Property Filter */}
             <div class="mb-3">
                 <Card>
+                    <CardTitle title="Filter" />
                     <CardBody>
                         {renderFilter()}
                         {renderPaginator()}
