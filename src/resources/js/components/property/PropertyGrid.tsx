@@ -22,7 +22,7 @@ const PropertyGrid: React.FC = () => {
             <p className="mb-2">Displaying {properties.length} results.</p>
 
             {/* Property Grid */}
-            <div className="grid grid-cols-3 gap-5 w-full">
+            <div className="grid grid-cols-3 gap-1 w-full">
                 {properties.map((property, index) => {
                     return (
                         <PropertyCard

@@ -9,7 +9,7 @@ const CardTitle: React.FC<Props> = (props: Props) => {
     return (
         <React.Fragment>
             {/* Card Title */}
-            <div className="card-title text-primary p-2 bg-base-200">
+            <div className="card-title text-primary p-2 bg-base-200 border-t-4 border-primary">
                 {props.title}
                 {props.children}
             </div>
