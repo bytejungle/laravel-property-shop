@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import Api from "../networking/api";
+import Api from "../../networking/api";
 import AgentCard from "./AgentCard";
 
 const TopAgentGrid: React.FC = () => {

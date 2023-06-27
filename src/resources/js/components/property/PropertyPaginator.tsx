@@ -1,16 +1,16 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import Api, { RequestOptions } from "../networking/api";
+import Api, { RequestOptions } from "../../networking/api";
 import { toast } from "react-toastify";
-import Card from "./card/Card";
-import Spinner from "./Spinner";
-import CardBody from "./card/CardBody";
+import Card from "../card/Card";
+import Spinner from "../Spinner";
+import CardBody from "../card/CardBody";
 
-import CountryDropSelectInput from "./input/CountryDropSelectInput";
-import NumberDropSelectInput from "./input/NumberDropSelectInput";
-import CountryListModal from "./CountryListModal";
-import Button from "./input/FormButton";
-import CardTitle from "./card/CardTitle";
+import CountryDropSelectInput from "../input/CountryDropSelectInput";
+import NumberDropSelectInput from "../input/NumberDropSelectInput";
+import CountryListModal from "../CountryListModal";
+import Button from "../input/FormButton";
+import CardTitle from "../card/CardTitle";
 
 interface Props {
     countryId: number;

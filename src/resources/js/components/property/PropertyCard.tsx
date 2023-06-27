@@ -1,11 +1,11 @@
 import React from "react";
-import { Property } from "../networking/api";
+import { Property } from "../../networking/api";
 import moment from "moment";
-import BadgeOutline from "./BadgeOutline";
-import Card from "./card/Card";
-import CardBody from "./card/CardBody";
-import CardActions from "./card/CardActions";
-import CardTitle from "./card/CardTitle";
+import BadgeOutline from "../misc/BadgeOutline";
+import Card from "../card/Card";
+import CardBody from "../card/CardBody";
+import CardActions from "../card/CardActions";
+import CardTitle from "../card/CardTitle";
 import { toast } from "react-toastify";
 
 interface Props {

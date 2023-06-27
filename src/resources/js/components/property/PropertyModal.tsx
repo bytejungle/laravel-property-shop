@@ -1,7 +1,7 @@
 import React from "react";
-import { Property } from "../networking/api";
-import AgentCard from "./AgentCard";
-import Modal from "./Modal";
+import { Property } from "../../networking/api";
+import AgentCard from "../agent/AgentCard";
+import Modal from "../Modal";
 
 interface Props {
     id: string;

@@ -12,13 +12,9 @@ const Table: React.FC<Props> = (props: Props) => {
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* Header */}
-                    <thead>
-                        {props.headerRow}
-                    </thead>
+                    <thead>{props.headerRow}</thead>
                     {/* Body */}
-                    <tbody>
-                        {props.bodyRows}
-                    </tbody>
+                    <tbody>{props.bodyRows}</tbody>
                 </table>
             </div>
         </React.Fragment>

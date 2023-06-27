@@ -1,15 +1,15 @@
 import React from "react";
-import Api, { Agent } from "../networking/api";
+import Api, { Agent } from "../../networking/api";
 import { useState, useEffect } from "react";
-import StringHelper from "../helpers/StringHelper";
-import Avatar from "./Avatar";
+import StringHelper from "../../helpers/StringHelper";
+import Avatar from "../misc/Avatar";
 import moment from "moment";
-import BadgeOutline from "./BadgeOutline";
-import Spinner from "./Spinner";
-import Card from "./card/Card";
-import CardBody from "./card/CardBody";
-import CardActions from "./card/CardActions";
-import CardTitle from "./card/CardTitle";
+import BadgeOutline from "../misc/BadgeOutline";
+import Spinner from "../Spinner";
+import Card from "../card/Card";
+import CardBody from "../card/CardBody";
+import CardActions from "../card/CardActions";
+import CardTitle from "../card/CardTitle";
 
 interface Props {
     agentId: number;

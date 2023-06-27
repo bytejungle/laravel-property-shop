@@ -1,8 +1,8 @@
 import React from "react";
-import Spinner from "./Spinner";
-import CardBody from "./card/CardBody";
-import Card from "./card/Card";
-import CardTitle from "./card/CardTitle";
+import Spinner from "../Spinner";
+import CardBody from "../card/CardBody";
+import Card from "../card/Card";
+import CardTitle from "../card/CardTitle";
 
 interface Props {
     title: string;

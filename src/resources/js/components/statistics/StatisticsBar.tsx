@@ -1,8 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import StatisticsBox from "./StatisticsBox";
-import Api from "../networking/api";
-import Spinner from "./Spinner";
+import Api from "../../networking/api";
+import DividerHorizontal from "../layout/DividerHorizontal";
 
 const StatisticsBar: React.FC = () => {
     const [properties, setProperties] = useState<number>(0);
@@ -35,7 +35,7 @@ const StatisticsBar: React.FC = () => {
                         isLoading={isLoading}
                     />
                 </div>
-                <div className="divider divider-horizontal"></div>
+                <DividerHorizontal />
                 {/* Total Countries */}
                 <div className="grid flex-grow bg-base-200">
                     <StatisticsBox
@@ -44,7 +44,7 @@ const StatisticsBar: React.FC = () => {
                         isLoading={isLoading}
                     />
                 </div>
-                <div className="divider divider-horizontal"></div>
+                <DividerHorizontal />
                 {/* Total Agents */}
                 <div className="grid flex-grow bg-base-200">
                     <StatisticsBox

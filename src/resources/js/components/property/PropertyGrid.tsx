@@ -1,7 +1,7 @@
 import React from "react";
 import PropertyPaginator from "./PropertyPaginator";
 import { useState } from "react";
-import { Country, Property, PropertyFilter } from "../networking/api";
+import { Country, Property, PropertyFilter } from "../../networking/api";
 import PropertyCard from "./PropertyCard";
 import PropertyModal from "./PropertyModal";
 

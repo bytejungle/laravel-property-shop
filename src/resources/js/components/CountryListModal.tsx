@@ -3,7 +3,7 @@ import Modal from "./Modal";
 import Api, { Country } from "../networking/api";
 import { useState, useEffect } from "react";
 import Table from "./Table";
-import CountryFlag from "./CountryFlag";
+import CountryFlag from "./misc/CountryFlag";
 
 interface Props {
     id: string;
