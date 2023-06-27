@@ -9,7 +9,7 @@ const Table: React.FC<Props> = (props: Props) => {
     return (
         <React.Fragment>
             {/* Table */}
-            <div className="overflow-x-auto">
+            <div className="w-full overflow-x-auto">
                 <table className="table">
                     {/* Header */}
                     <thead>{props.headerRow}</thead>
