@@ -2,11 +2,11 @@ import React from "react";
 
 interface Props {
     title: string;
-    buttonText: string;
+    value: string;
     handler: any;
 }
 
-const FormButton: React.FC<Props> = (props: Props) => {
+const TextInput: React.FC<Props> = (props: Props) => {
     return (
         <React.Fragment>
             {/* Form Button */}
@@ -15,12 +15,16 @@ const FormButton: React.FC<Props> = (props: Props) => {
                 <label className="label">
                     <span className="label-text">{props.title}</span>
                 </label>
-                <button className="btn" onClick={props.handler}>
-                    {props.buttonText}
-                </button>
+                <input
+                    type="text"
+                    onChange={(event) => props.handler(event.target.value)}
+                    placeholder={props.title}
+                    className="input input-bordered"
+                    value={props.value}
+                />
             </div>
         </React.Fragment>
     );
 };
 
-export default FormButton;
+export default TextInput;

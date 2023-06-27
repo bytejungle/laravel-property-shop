@@ -4,6 +4,7 @@ import Api, { Country } from "../networking/api";
 import { useState, useEffect } from "react";
 import Table from "./Table";
 import CountryFlag from "./misc/CountryFlag";
+import TextInput from "./input/TextInput";
 
 interface Props {
     id: string;
@@ -13,6 +14,7 @@ interface Props {
 
 const CountryListModal: React.FC<Props> = (props: Props) => {
     const [countries, setCountries] = useState<Array<Country>>([]);
+    const [countrySearch, setCountrySearch] = useState<String>("");
 
     useEffect(() => {
         Api.getCountries(true).then((response) => {
@@ -32,7 +34,18 @@ const CountryListModal: React.FC<Props> = (props: Props) => {
     };
 
     const renderTableBodyRows = () => {
-        return countries.map((country: Country) => {
+        // filter countries from search input
+        let filteredCountries = countries;
+        if (countrySearch) {
+            filteredCountries = countries.filter((country: Country) => {
+                const countryName = country.name.toLowerCase();
+                if (countryName.startsWith(countrySearch.toLowerCase())) {
+                    return country;
+                }
+            });
+        }
+
+        return filteredCountries.map((country: Country) => {
             return (
                 <tr>
                     <td className="flex">
@@ -56,7 +69,14 @@ const CountryListModal: React.FC<Props> = (props: Props) => {
         <React.Fragment>
             {/* Property Modal */}
             <Modal id={props.id} title={props.title}>
-                <div className="flex h-96">
+                {/* Search Input */}
+                <TextInput
+                    title="Search by name..."
+                    value={countrySearch}
+                    handler={setCountrySearch}
+                />
+                {/* Table */}
+                <div className="flex h-96 mt-4">
                     <Table
                         headerRow={renderTableHeaderRow()}
                         bodyRows={renderTableBodyRows()}

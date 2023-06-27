@@ -15,7 +15,7 @@ interface Props {
 const DropSelectInput: React.FC<Props> = (props: Props) => {
     return (
         <React.Fragment>
-            <div className="form-control w-full max-w-xs">
+            <div className="form-control w-full">
                 <label className="label">
                     <span className="label-text">{props.title}</span>
                 </label>
