@@ -28,7 +28,7 @@ const CountryListModal: React.FC<Props> = (props: Props) => {
         return (
             <tr>
                 <th>Name</th>
-                <th>Action</th>
+                <th></th>
             </tr>
         );
     };
